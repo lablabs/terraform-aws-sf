@@ -4,7 +4,7 @@
 
 Creates ASGs with static IP and EBS volume for each launched EC2 instance.
 
-The static IPs and EBS volumes are managed by [aws-sf-lambda](https://git.pixelfederation.com/infra/lambda-infra/tree/master/aws-sf-lambda/src) lambda function that gets triggered on instance launch.
+The static IPs and EBS volumes are managed by aws-sf-lambdalambda function that gets triggered on instance launch.
 
 ## Example
 

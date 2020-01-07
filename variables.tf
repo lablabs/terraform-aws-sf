@@ -8,6 +8,10 @@ variable "ebs_type" {
   default = "gp2"
 }
 
+variable "root_ebs_size" {
+  default = "20"
+}
+
 variable "ebs_size" {
   default = "20"
 }

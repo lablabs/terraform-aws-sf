@@ -79,3 +79,14 @@ variable "sg_ids" {
 
 variable "lambda_s3_bucket" {}
 variable "lambda_s3_bucket_key" {}
+
+variable "before_sf_init_userdata" {
+  type        = string
+  default     = ""
+  description = "Additional commands to execute on machine before sf init was run"
+}
+variable "after_sf_init_userdata" {
+  type        = string
+  default     = ""
+  description = "Additional commands to execute on machine after sf init was run"
+}

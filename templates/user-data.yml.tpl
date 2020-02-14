@@ -18,5 +18,9 @@ Content-Transfer-Encoding: 7bit
 Content-Disposition: attachment; filename="userdata.txt"
 
 #!/bin/bash
+${before_sf_init_userdata}
+
 curl -s -L https://raw.githubusercontent.com/lablabs/aws-sf-userdata/master/init.sh | bash
+
+${after_sf_init_userdata}
 --//

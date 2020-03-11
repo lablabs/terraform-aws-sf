@@ -33,7 +33,6 @@ resource "aws_autoscaling_group" "default" {
   min_size                  = lookup(var.node_count, element(var.aws_zones, count.index))
   max_size                  = lookup(var.node_count, element(var.aws_zones, count.index))
   desired_capacity          = lookup(var.node_count, element(var.aws_zones, count.index))
-  availability_zones        = [element(var.aws_zones, count.index)]
   vpc_zone_identifier       = [lookup(var.subnets, element(var.aws_zones, count.index))]
   launch_configuration      = aws_launch_configuration.default.id
 

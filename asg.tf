@@ -21,6 +21,10 @@ resource "aws_launch_configuration" "default" {
 
 data "template_file" "user_data" {
   template = "${file("${path.module}/templates/user-data.yml.tpl")}"
+  vars = {
+    before_sf_init_userdata = "${var.before_sf_init_userdata}"
+    after_sf_init_userdata  = "${var.after_sf_init_userdata}"
+  }
 }
 
 resource "aws_autoscaling_group" "default" {

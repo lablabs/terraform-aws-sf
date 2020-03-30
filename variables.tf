@@ -29,7 +29,7 @@ variable "ebs_optimized" {
 }
 
 variable "asg_extra_tags" {
-  type = "list"
+  type = list
   default = [
     {
       key                 = "Terraform"
@@ -40,12 +40,12 @@ variable "asg_extra_tags" {
 }
 
 variable "load_balancers" {
-  type    = "list"
+  type    = list
   default = []
 }
 
 variable "target_group_arns" {
-  type    = "list"
+  type    = list
   default = []
 }
 
@@ -56,16 +56,16 @@ variable "stack_name" {}
 
 variable "node_count" {
   description = "Number of nodes to launch in AZs."
-  type        = "map"
+  type        = map(string)
 }
 
 variable "subnets" {
   description = "TODO"
-  type        = "map"
+  type        = map(string)
 }
 
 variable "aws_zones" {
-  type = "list"
+  type = list
 }
 
 variable "key_pair_id" {}
@@ -74,7 +74,7 @@ variable "aws_region" {}
 variable "iam_instance_profile_id" {}
 variable "ami" {}
 variable "sg_ids" {
-  type = "list"
+  type = list
 }
 
 variable "lambda_s3_bucket" {}

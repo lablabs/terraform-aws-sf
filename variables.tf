@@ -28,15 +28,10 @@ variable "ebs_optimized" {
   default = "true"
 }
 
-variable "asg_extra_tags" {
-  type = list
-  default = [
-    {
-      key                 = "Terraform"
-      value               = "true"
-      propagate_at_launch = true
-    }
-  ]
+variable "tags" {
+  type        = map(string)
+  default     = {}
+  description = "Additional tags (e.g. `map('BusinessUnit`,`XYZ`)"
 }
 
 variable "load_balancers" {

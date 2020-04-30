@@ -23,7 +23,7 @@ module "infra" {
   lambda_s3_bucket        = aws_s3_bucket.lambda.id
   lambda_s3_bucket_key    = local.lambda_s3_bucket_key
   sg_ids                  = [aws_security_group.kafka.id]
-  asg_extra_tags          = local.kafka_tags
+  tags                    = local.kafka_tags
   load_balancers          = [aws_elb.kafka.name]
   stack_name              = "kafka"
   instance_type           = local.kafka_instance_type
@@ -53,6 +53,6 @@ module "infra" {
 | ebs_encrypted | Enable ebs encryption | string | `"true"` | no |
 | ebs_delete_on_termination | Delete EBS volume on termination | string | `"true"` | no |
 | ebs_optimized | Enable EBS optimization | string | `"true"` | no |
-| asg_extra_tags | List of aws tags added to the instances | list | [{ key = "Terraform", value = "true", propagate_at_launch = true }] | no |
+| tags | Additional tags (e.g. map('BusinessUnit','XYZ') | `{ "Terraform" = "true" }` | no |
 | load_balancers | List of LBs added to the ASGs | list | `<list>` | no |
 | target_group_arns | List of targer group ARNs added to the ASGs | list | `<list>` | no |

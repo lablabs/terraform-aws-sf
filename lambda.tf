@@ -43,7 +43,6 @@ resource "aws_iam_role_policy" "policy_lambda_asg" {
   ]
 }
 EOF
-  tags = var.tags
 }
 
 resource "aws_iam_role" "lambda_asg" {
@@ -64,6 +63,7 @@ resource "aws_iam_role" "lambda_asg" {
   ]
 }
 EOF
+  tags = var.tags
 }
 
 resource "aws_lambda_permission" "asg" {

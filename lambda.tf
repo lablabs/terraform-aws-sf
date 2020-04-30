@@ -9,16 +9,17 @@ resource "aws_lambda_function" "asg" {
   runtime       = "python3.6"
   timeout       = 30
 
-  tags = {
-    Name = "${var.name}-aws-sf"
-  }
-
   environment {
     variables = {
       FILTER_TAG_KEY   = "Stack"
       FILTER_TAG_VALUE = var.stack_name
     }
   }
+
+  tags = merge({
+    Name = "${var.name}-aws-sf"
+  }, var.tags)
+
 }
 
 resource "aws_iam_role_policy" "policy_lambda_asg" {
@@ -62,6 +63,7 @@ resource "aws_iam_role" "lambda_asg" {
   ]
 }
 EOF
+  tags = var.tags
 }
 
 resource "aws_lambda_permission" "asg" {

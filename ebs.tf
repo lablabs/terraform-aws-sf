@@ -5,12 +5,11 @@ resource "aws_ebs_volume" "az0" {
   encrypted         = var.ebs_encrypted
   type              = var.ebs_type
 
-  tags = {
-    Name              = var.name
-    Stack             = var.stack_name
-    Inventory         = element(aws_network_interface.az0.*.id, count.index)
-    Availability_Zone = element(var.aws_zones, 0)
-  }
+  tags = merge({
+    Name      = var.name
+    Stack     = var.stack_name
+    Inventory = element(aws_network_interface.az0.*.id, count.index)
+  }, var.tags)
 
 }
 
@@ -21,12 +20,11 @@ resource "aws_ebs_volume" "az1" {
   encrypted         = var.ebs_encrypted
   type              = var.ebs_type
 
-  tags = {
-    Name              = var.name
-    Stack             = var.stack_name
-    Inventory         = element(aws_network_interface.az1.*.id, count.index)
-    Availability_Zone = element(var.aws_zones, 1)
-  }
+  tags = merge({
+    Name      = var.name
+    Stack     = var.stack_name
+    Inventory = element(aws_network_interface.az1.*.id, count.index)
+  }, var.tags)
 
 }
 
@@ -37,11 +35,10 @@ resource "aws_ebs_volume" "az2" {
   encrypted         = var.ebs_encrypted
   type              = var.ebs_type
 
-  tags = {
-    Name              = var.name
-    Stack             = var.stack_name
-    Inventory         = element(aws_network_interface.az2.*.id, count.index)
-    Availability_Zone = element(var.aws_zones, 0)
-  }
+  tags = merge({
+    Name      = var.name
+    Stack     = var.stack_name
+    Inventory = element(aws_network_interface.az2.*.id, count.index)
+  }, var.tags)
 
 }

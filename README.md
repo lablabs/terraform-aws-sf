@@ -54,5 +54,7 @@ module "infra" {
 | ebs_delete_on_termination | Delete EBS volume on termination | string | `"true"` | no |
 | ebs_optimized | Enable EBS optimization | string | `"true"` | no |
 | tags | Additional tags (e.g. map('BusinessUnit','XYZ') | `{ "Terraform" = "true" }` | no |
+| tag_stack_name | Name of the Stack tag which is used by the aws-sf lambda | `"aws-sf-stack-name"` | no |
+| tag_inventory_name | Name of the Invetory tag which is used by the aws-sf lambda | `"aws-sf-inventory-name"` | no |
 | load_balancers | List of LBs added to the ASGs | list | `<list>` | no |
 | target_group_arns | List of targer group ARNs added to the ASGs | list | `<list>` | no |

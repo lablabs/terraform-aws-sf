@@ -34,6 +34,14 @@ variable "tags" {
   description = "Additional tags (e.g. `map('BusinessUnit`,`XYZ`)"
 }
 
+variable "tag_stack_name" {
+  default = "Stack"
+}
+
+variable "tag_inventory_name" {
+  default = "Inventory"
+}
+
 variable "load_balancers" {
   type    = list
   default = []

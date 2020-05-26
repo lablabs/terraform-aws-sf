@@ -11,8 +11,9 @@ resource "aws_lambda_function" "asg" {
 
   environment {
     variables = {
-      FILTER_TAG_KEY   = "Stack"
-      FILTER_TAG_VALUE = var.stack_name
+      TAG_STACK_NAME     = var.tag_stack_name
+      TAG_STACK_VALUE    = var.stack_name
+      TAG_INVENTORY_NAME = var.tag_inventory_name
     }
   }
 
@@ -63,7 +64,7 @@ resource "aws_iam_role" "lambda_asg" {
   ]
 }
 EOF
-  tags = var.tags
+  tags               = var.tags
 }
 
 resource "aws_lambda_permission" "asg" {

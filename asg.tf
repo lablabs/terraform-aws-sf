@@ -10,6 +10,7 @@ resource "aws_launch_configuration" "default" {
 
   root_block_device {
     volume_type           = var.ebs_type
+    iops                  = var.ebs_iops
     volume_size           = var.root_ebs_size
     delete_on_termination = var.ebs_delete_on_termination
   }

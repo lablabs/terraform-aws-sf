@@ -16,6 +16,10 @@ variable "ebs_size" {
   default = "20"
 }
 
+variable "ebs_iops" {
+  default = ""
+}
+
 variable "ebs_encrypted" {
   default = "true"
 }

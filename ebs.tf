@@ -4,6 +4,7 @@ resource "aws_ebs_volume" "az0" {
   size              = var.ebs_size
   encrypted         = var.ebs_encrypted
   type              = var.ebs_type
+  iops              = var.ebs_iops
 
   tags = merge({
     Name                        = var.name
@@ -19,6 +20,7 @@ resource "aws_ebs_volume" "az1" {
   size              = var.ebs_size
   encrypted         = var.ebs_encrypted
   type              = var.ebs_type
+  iops              = var.ebs_iops
 
   tags = merge({
     Name                        = var.name
@@ -34,6 +36,7 @@ resource "aws_ebs_volume" "az2" {
   size              = var.ebs_size
   encrypted         = var.ebs_encrypted
   type              = var.ebs_type
+  iops              = var.ebs_iops
 
   tags = merge({
     Name                        = var.name

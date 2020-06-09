@@ -82,9 +82,9 @@ resource "aws_cloudwatch_event_rule" "lambda_asg" {
 }
 
 data "template_file" "aws_cloudwatch_event_rule_pattern" {
-  template = "${file("${path.module}/templates/cloudwatch-event-rule.json.tpl")}"
+  template = file("${path.module}/templates/cloudwatch-event-rule.json.tpl")
   vars = {
-    asg-arns = "${jsonencode(aws_autoscaling_group.default.*.name)}"
+    asg-arns = jsonencode(aws_autoscaling_group.default.*.name)
   }
 }
 

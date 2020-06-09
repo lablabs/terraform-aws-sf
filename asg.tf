@@ -21,10 +21,10 @@ resource "aws_launch_configuration" "default" {
 }
 
 data "template_file" "user_data" {
-  template = "${file("${path.module}/templates/user-data.yml.tpl")}"
+  template = file("${path.module}/templates/user-data.yml.tpl")
   vars = {
-    before_sf_init_userdata = "${var.before_sf_init_userdata}"
-    after_sf_init_userdata  = "${var.after_sf_init_userdata}"
+    before_sf_init_userdata = var.before_sf_init_userdata
+    after_sf_init_userdata  = var.after_sf_init_userdata
   }
 }
 
@@ -55,18 +55,29 @@ resource "aws_autoscaling_group" "default" {
     "GroupMaxSize",
   ]
 
-  tags = concat(flatten([
-    for key in keys(var.tags) :
-    {
-      key                 = key
-      value               = var.tags[key]
-      propagate_at_launch = true
-    }
-    ]), list(
-    { "key" = "Name", "value" = "${var.name}-${element(var.aws_zones, count.index)}", "propagate_at_launch" = "true" },
-    { "key" = "${var.tag_stack_name}", "value" = "${var.stack_name}", "propagate_at_launch" = "true" }
-  ))
-
+  tags = concat(
+    flatten(
+      [for key in keys(var.tags) :
+        {
+          key                 = key
+          value               = var.tags[key]
+          propagate_at_launch = true
+        }
+      ]
+    ),
+    list(
+      {
+        key                 = "Name"
+        value               = "${var.name}-${element(var.aws_zones, count.index)}"
+        propagate_at_launch = true
+      },
+      {
+        key                 = var.tag_stack_name
+        value               = var.stack_name
+        propagate_at_launch = true
+      }
+    )
+  )
 }
 
 resource "aws_autoscaling_lifecycle_hook" "default" {

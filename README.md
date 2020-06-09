@@ -4,7 +4,7 @@
 
 Creates ASGs with static IP and EBS volume for each launched EC2 instance.
 
-The static IPs and EBS volumes are managed by aws-sf-lambdalambda function that gets triggered on instance launch.
+The static IPs and EBS volumes are managed by aws-sf-lambda lambda function that gets triggered on instance launch.
 
 ## Example
 
@@ -53,7 +53,7 @@ module "infra" {
 | before\_sf\_init\_userdata | Additional commands to execute on machine before sf init was run | `string` | `""` | no |
 | ebs\_delete\_on\_termination | Delete EBS volume on termination | `string` | `"true"` | no |
 | ebs\_encrypted | Enable EBS encryption | `string` | `"true"` | no |
-| ebs\_iops | IOPS for EBS volumes | `string` | `""` | no |
+| ebs\_iops | IOPS for EBS volumes | `string` | `null` | no |
 | ebs\_optimized | Enable EBS optimization | `string` | `"true"` | no |
 | ebs\_size | Size of the EBS volume | `string` | `"20"` | no |
 | ebs\_type | Type of the EBS volume | `string` | `"gp2"` | no |

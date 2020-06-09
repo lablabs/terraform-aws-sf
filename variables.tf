@@ -27,7 +27,7 @@ variable "ebs_size" {
 variable "ebs_iops" {
   description = "IOPS for EBS volumes"
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "ebs_encrypted" {

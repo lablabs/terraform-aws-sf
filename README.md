@@ -30,31 +30,50 @@ module "infra" {
   ebs_size                = local.kafka_ebs_size
 }
 ```
+
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| name | Name which is used as a prefix for the resources | string | n/a | yes |
-| stack_name | Name of the stack that is supposed to be managed by the module  | string | n/a | yes |
-| node\_count | Number of nodes to launch in AZs | map | n/a | yes |
-| subnets | ID of subnets where the module should launch EC2 instances | map | n/a | yes |
-| aws_zones | Name of the AZs | list | n/a | yes |
-| key_pair_id | SSH key pair id | string | n/a | yes |
-| vpc_id | ID of the VPC | string | n/a | yes |
-| aws_region | AWS region | string | n/a | yes |
-| iam_instance_profile_id | IAM instance profile id associated with the EC2 instances | string | n/a | yes |
-| ami | ID of ami used to launch instances | string | n/a | yes |
-| sg_ids | ID of security groups that are assigned to the instances | list | n/a | yes |
-| lambda_s3_bucket | S3 bucket where the lambda function package is stored | string | n/a | yes |
-| lambda_s3_bucket_key | S3 bucket key of the lambda function package | string | n/a | yes |
-| instance_type | Instance type of the instances | string | `"t3.medium"` | no |
-| ebs_type | Type of the EBS volume | string | `"gp2"` | no |
-| ebs_size | Size of the EBS volume | string | `"20"` | no |
-| ebs_encrypted | Enable ebs encryption | string | `"true"` | no |
-| ebs_delete_on_termination | Delete EBS volume on termination | string | `"true"` | no |
-| ebs_optimized | Enable EBS optimization | string | `"true"` | no |
-| tags | Additional tags (e.g. map('BusinessUnit','XYZ') | `{ "Terraform" = "true" }` | no |
-| tag_stack_name | Name of the Stack tag which is used by the aws-sf lambda | `"aws-sf-stack-name"` | no |
-| tag_inventory_name | Name of the Invetory tag which is used by the aws-sf lambda | `"aws-sf-inventory-name"` | no |
-| load_balancers | List of LBs added to the ASGs | list | `<list>` | no |
-| target_group_arns | List of targer group ARNs added to the ASGs | list | `<list>` | no |
+|------|-------------|------|---------|:--------:|
+| ami | ID of AMI used to launch instances | `string` | n/a | yes |
+| aws\_region | AWS region | `string` | n/a | yes |
+| aws\_zones | Name of the AZs | `list(string)` | n/a | yes |
+| iam\_instance\_profile\_id | IAM instance profile ID associated with the EC2 instances | `string` | n/a | yes |
+| key\_pair\_id | SSH key pair ID | `string` | n/a | yes |
+| lambda\_s3\_bucket | S3 bucket where the lambda function package is stored | `string` | n/a | yes |
+| lambda\_s3\_bucket\_key | S3 bucket key of the lambda function package | `string` | n/a | yes |
+| name | Name which is used as a prefix for the resources | `string` | n/a | yes |
+| node\_count | Number of nodes to launch in AZs | `map(string)` | n/a | yes |
+| sg\_ids | ID of security groups that are assigned to the instances | `list(string)` | n/a | yes |
+| stack\_name | Name of the stack that is supposed to be managed by the module | `string` | n/a | yes |
+| subnets | ID of subnets where the module should launch EC2 instances | `map(string)` | n/a | yes |
+| vpc\_id | ID of the VPC | `string` | n/a | yes |
+| after\_sf\_init\_userdata | Additional commands to execute on machine after sf init was run | `string` | `""` | no |
+| before\_sf\_init\_userdata | Additional commands to execute on machine before sf init was run | `string` | `""` | no |
+| ebs\_delete\_on\_termination | Delete EBS volume on termination | `string` | `"true"` | no |
+| ebs\_encrypted | Enable EBS encryption | `string` | `"true"` | no |
+| ebs\_iops | IOPS for EBS volumes | `string` | `""` | no |
+| ebs\_optimized | Enable EBS optimization | `string` | `"true"` | no |
+| ebs\_size | Size of the EBS volume | `string` | `"20"` | no |
+| ebs\_type | Type of the EBS volume | `string` | `"gp2"` | no |
+| instance\_type | Instance type of the instances | `string` | `"t3.medium"` | no |
+| load\_balancers | List of LBs added to the ASGs | `list(string)` | `[]` | no |
+| root\_ebs\_size | Size of the root EBS volume | `string` | `"20"` | no |
+| tag\_inventory\_name | Name of the Inventory tag which is used by the aws-sf lambda | `string` | `"Inventory"` | no |
+| tag\_stack\_name | Name of the Stack tag which is used by the aws-sf lambda | `string` | `"Stack"` | no |
+| tags | Additional tags, e.g. `map('BusinessUnit','XYZ')` | `map(string)` | <pre>{<br>  "Terraform": true<br>}</pre> | no |
+| target\_group\_arns | List of target group ARNs added to the ASGs | `list(string)` | `[]` | no |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| eni-az0-id | ID of the ENI in AZ0 |
+| eni-az0-ip | IP address of the ENI in AZ0 |
+| eni-az1-id | ID of the ENI in AZ1 |
+| eni-az1-ip | IP address of the ENI in AZ1 |
+| eni-az2-id | ID of the ENI in AZ2 |
+| eni-az2-ip | IP address of the ENI in AZ2 |
+
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

@@ -5,9 +5,9 @@ resource "aws_network_interface" "az0" {
   description     = var.name
 
   tags = merge({
-    Name                   = var.name
-    var.tag_stack_name     = var.stack_name
-    var.tag_inventory_name = "${var.name}-${element(var.aws_zones, 0)}-${count.index}"
+    Name                        = var.name
+    "${var.tag_stack_name}"     = var.stack_name
+    "${var.tag_inventory_name}" = "${var.name}-${element(var.aws_zones, 0)}-${count.index}"
   }, var.tags)
 }
 
@@ -18,9 +18,9 @@ resource "aws_network_interface" "az1" {
   description     = var.name
 
   tags = merge({
-    Name                   = var.name
-    var.tag_stack_name     = var.stack_name
-    var.tag_inventory_name = "${var.name}-${element(var.aws_zones, 1)}-${count.index}"
+    Name                        = var.name
+    "${var.tag_stack_name}"     = var.stack_name
+    "${var.tag_inventory_name}" = "${var.name}-${element(var.aws_zones, 1)}-${count.index}"
   }, var.tags)
 }
 
@@ -31,8 +31,8 @@ resource "aws_network_interface" "az2" {
   description     = var.name
 
   tags = merge({
-    Name                   = var.name
-    var.tag_stack_name     = var.stack_name
-    var.tag_inventory_name = "${var.name}-${element(var.aws_zones, 2)}-${count.index}"
+    Name                        = var.name
+    "${var.tag_stack_name}"     = var.stack_name
+    "${var.tag_inventory_name}" = "${var.name}-${element(var.aws_zones, 2)}-${count.index}"
   }, var.tags)
 }

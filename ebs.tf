@@ -7,9 +7,9 @@ resource "aws_ebs_volume" "az0" {
   iops              = var.ebs_iops
 
   tags = merge({
-    Name                   = var.name
-    var.tag_stack_name     = var.stack_name
-    var.tag_inventory_name = element(aws_network_interface.az0.*.id, count.index)
+    Name                        = var.name
+    "${var.tag_stack_name}"     = var.stack_name
+    "${var.tag_inventory_name}" = element(aws_network_interface.az0.*.id, count.index)
   }, var.tags)
 
 }
@@ -23,9 +23,9 @@ resource "aws_ebs_volume" "az1" {
   iops              = var.ebs_iops
 
   tags = merge({
-    Name                   = var.name
-    var.tag_stack_name     = var.stack_name
-    var.tag_inventory_name = element(aws_network_interface.az1.*.id, count.index)
+    Name                        = var.name
+    "${var.tag_stack_name}"     = var.stack_name
+    "${var.tag_inventory_name}" = element(aws_network_interface.az1.*.id, count.index)
   }, var.tags)
 
 }
@@ -39,9 +39,9 @@ resource "aws_ebs_volume" "az2" {
   iops              = var.ebs_iops
 
   tags = merge({
-    Name                   = var.name
-    var.tag_stack_name     = var.stack_name
-    var.tag_inventory_name = element(aws_network_interface.az2.*.id, count.index)
+    Name                        = var.name
+    "${var.tag_stack_name}"     = var.stack_name
+    "${var.tag_inventory_name}" = element(aws_network_interface.az2.*.id, count.index)
   }, var.tags)
 
 }

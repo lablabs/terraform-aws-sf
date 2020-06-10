@@ -4,32 +4,31 @@
 
 Creates ASGs with static IP and EBS volume for each launched EC2 instance.
 
-The static IPs and EBS volumes are managed by aws-sf-lambda lambda function that gets triggered on instance launch.
+The static IPs and EBS volumes are managed by [aws-sf-lambda](#aws-sf-lambda) lambda function that gets triggered on instance launch.
 
-## Example
+## Requirements
 
-```
-module "infra" {
-  source                  = "../"
-  name                    = "kafka-${local.environment_name}"
-  node_count              = local.kafka_node_count
-  subnets                 = local.kafka_subnets
-  key_pair_id             = data.terraform_remote_state.base_state.outputs.key_pair_id
-  vpc_id                  = data.terraform_remote_state.base_state.outputs.vpc_id
-  aws_region              = data.terraform_remote_state.base_state.outputs.region
-  aws_zones               = data.terraform_remote_state.base_state.outputs.availability_zones
-  iam_instance_profile_id = aws_iam_instance_profile.kafka.id
-  ami                     = local.base_ami
-  lambda_s3_bucket        = aws_s3_bucket.lambda.id
-  lambda_s3_bucket_key    = local.lambda_s3_bucket_key
-  sg_ids                  = [aws_security_group.kafka.id]
-  tags                    = local.kafka_tags
-  load_balancers          = [aws_elb.kafka.name]
-  stack_name              = "kafka"
-  instance_type           = local.kafka_instance_type
-  ebs_size                = local.kafka_ebs_size
-}
-```
+This plugin requires Ubuntu AMI to be used, see [aws-sf-userdata](#aws-sf-userdata) related project for further reference.
+
+## Related projects
+
+### aws-sf-lambda
+
+A lambda function which is used for attaching of static ENIs and EBS volumes to
+an EC2 instance launched by AWS ASGs.
+
+URL: https://github.com/lablabs/aws-sf-lambda
+
+### aws-sf-userdata
+
+User data bash scripts which are used for network and storage setup once EC2
+instances are running.
+
+URL: https://github.com/lablabs/aws-sf-userdata
+
+## Examples
+
+See [Basic example](examples/basic/README.md) for further information.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs

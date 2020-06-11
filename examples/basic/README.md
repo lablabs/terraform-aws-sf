@@ -7,7 +7,7 @@ Configuration in this directory creates set of resources which are required by t
 To run this example you need to execute:
 
 ```shell script
-$ terraform limit
+$ terraform init
 $ terraform plan
 $ terraform apply
 ```

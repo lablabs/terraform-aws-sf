@@ -25,7 +25,7 @@ Run `terraform destroy` when you don’t need these resources.
 | aws\_zones | AWS Availability Zones where resources will be created | `list(string)` | <pre>[<br>  "eu-central-1a",<br>  "eu-central-1b",<br>  "eu-central-1c"<br>]</pre> | no |
 | instance\_type | EC2 instance type | `string` | `"t3.nano"` | no |
 | name | Name which is used as a prefix for the resources | `string` | `"kafka"` | no |
-| node\_count | Number of instances in each AZ | `map(number)` | <pre>{<br>  "eu-central-1a": 2,<br>  "eu-central-1b": 2,<br>  "eu-central-1c": 2<br>}</pre> | no |
+| node\_count | Number of instances in each AZ | `map(number)` | <pre>{<br>  "eu-central-1a": 1,<br>  "eu-central-1b": 1,<br>  "eu-central-1c": 1<br>}</pre> | no |
 | stack\_name | Name of the stack that is supposed to be managed by the module | `string` | `"kafka-dev"` | no |
 | vpc\_base\_cidr | AWS VPC base CIDR | `string` | `"10.1.0.0/16"` | no |
 

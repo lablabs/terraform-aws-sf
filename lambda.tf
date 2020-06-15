@@ -1,7 +1,21 @@
+locals {
+  lambda_zip_file_path = abspath(var.lambda_function_zip_filename)
+}
+
+resource "null_resource" "lambda_code" {
+  triggers = {
+    url : var.lambda_function_zip_base_url
+    filename : var.lambda_function_zip_filename
+  }
+
+  provisioner "local-exec" {
+    command = "curl -sSL -o ${var.lambda_function_zip_filename} ${var.lambda_function_zip_base_url}${var.lambda_function_zip_filename}"
+  }
+}
+
 resource "aws_lambda_function" "asg" {
   function_name = "${var.name}-aws-sf"
-  s3_bucket     = var.lambda_s3_bucket
-  s3_key        = var.lambda_s3_bucket_key
+  filename      = local.lambda_zip_file_path
   role          = aws_iam_role.lambda_asg.arn
   handler       = "main.handle"
   description   = "triggered by ASGs"
@@ -21,6 +35,7 @@ resource "aws_lambda_function" "asg" {
     Name = "${var.name}-aws-sf"
   }, var.tags)
 
+  depends_on = [null_resource.lambda_code]
 }
 
 resource "aws_iam_role_policy" "policy_lambda_asg" {

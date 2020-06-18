@@ -10,10 +10,10 @@ The static IPs and EBS volumes are managed by [aws-sf-lambda](#aws-sf-lambda) la
 
 This plugin requires Ubuntu AMI to be used, see [aws-sf-userdata](#aws-sf-userdata) related project for further reference.
 
-Every release of lambda function code should provide a zip file with a unique 
-url (a combination of `lambda_function_zip_base_url` and 
-`lambda_function_zip_filename` input variables). In other case, 
-`aws_lambda_function` resource may not be updated correctly. 
+Every release of lambda function code should provide a zip file with a unique
+url (a combination of `lambda_function_zip_base_url` and
+`lambda_function_zip_filename` input variables). In other case,
+`aws_lambda_function` resource may not be updated correctly.
 
 For downloading the lambda function zip file a `curl` tool is used.
 

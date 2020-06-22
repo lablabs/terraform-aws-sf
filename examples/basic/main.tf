@@ -117,4 +117,5 @@ module "sf" {
   subnets                 = { for s in aws_subnet.kafka : s.availability_zone => s.id }
   vpc_id                  = aws_vpc.kafka.id
   instance_type           = var.instance_type
+  lambda_function_version = "0.1.1"
 }

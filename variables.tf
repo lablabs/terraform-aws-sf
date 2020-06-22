@@ -151,12 +151,17 @@ variable "sg_ids" {
 
 variable "lambda_function_zip_base_url" {
   type        = string
-  description = "Base URL of zip file with lambda function code"
-  default     = "https://github.com/lablabs/aws-sf-lambda/releases/download/0.1.1/"
+  description = "Base URL of zip file with lambda function code. Path part with version number (see `lambda_function_version` variable) will be added automatically)"
+  default     = "https://github.com/lablabs/aws-sf-lambda/releases/download/"
 }
 
 variable "lambda_function_zip_filename" {
   type        = string
-  description = "Filename of zip file with lambda function code"
-  default     = "aws-sf-lambda-0.1.1.zip"
+  description = "Filename of zip file with lambda function code. Version number (see `lambda_function_version` variable) and `.zip` extension will be added automatically."
+  default     = "aws-sf-lambda-"
+}
+
+variable "lambda_function_version" {
+  type        = string
+  description = "Version of lambda function. See https://github.com/lablabs/aws-sf-lambda/releases"
 }

@@ -11,9 +11,9 @@ The static IPs and EBS volumes are managed by [aws-sf-lambda](#aws-sf-lambda) la
 This plugin requires Ubuntu AMI to be used, see [aws-sf-userdata](#aws-sf-userdata) related project for further reference.
 
 Every release of lambda function code should provide a zip file with a unique 
-url (a combination of `lambda_function_zip_base_url` and 
-`lambda_function_zip_filename` input variables). In other case, 
-`aws_lambda_function` resource may not be updated correctly. 
+url (a combination of `lambda_function_zip_base_url`, 
+`lambda_function_zip_filename` and `lambda_function_version` input variables).
+In other case, `aws_lambda_function` resource may not be updated correctly.
 
 For downloading the lambda function zip file a `curl` tool is used.
 
@@ -25,6 +25,15 @@ A lambda function which is used for attaching of static ENIs and EBS volumes to
 an EC2 instance launched by AWS ASGs.
 
 URL: https://github.com/lablabs/aws-sf-lambda
+
+#### Path and filename
+
+Three variables are related to the lambda function zip file: `lambda_function_zip_base_url`, `lambda_function_zip_filename` and `lambda_function_version`. Terraform will combine these three into valid path
+and download zip file: 
+```
+${lambda_function_zip_base_url}${lambda_function_version}/${lambda_function_zip_filename}${lambda_function_version}.zip
+```
+
 
 ### aws-sf-userdata
 
@@ -47,6 +56,7 @@ See [Basic example](examples/basic/README.md) for further information.
 | aws\_zones | Name of the AZs | `list(string)` | n/a | yes |
 | iam\_instance\_profile\_id | IAM instance profile ID associated with the EC2 instances | `string` | n/a | yes |
 | key\_pair\_id | SSH key pair ID | `string` | n/a | yes |
+| lambda\_function\_version | Version of lambda function. See https://github.com/lablabs/aws-sf-lambda/releases | `string` | n/a | yes |
 | name | Name which is used as a prefix for the resources | `string` | n/a | yes |
 | node\_count | Number of nodes to launch in AZs | `map(string)` | n/a | yes |
 | sg\_ids | ID of security groups that are assigned to the instances | `list(string)` | n/a | yes |
@@ -62,8 +72,8 @@ See [Basic example](examples/basic/README.md) for further information.
 | ebs\_size | Size of the EBS volume | `string` | `"20"` | no |
 | ebs\_type | Type of the EBS volume | `string` | `"gp2"` | no |
 | instance\_type | Instance type of the instances | `string` | `"t3.medium"` | no |
-| lambda\_function\_zip\_base\_url | Base URL of zip file with lambda function code | `string` | `"https://github.com/lablabs/aws-sf-lambda/releases/download/0.1.1/"` | no |
-| lambda\_function\_zip\_filename | Filename of zip file with lambda function code | `string` | `"aws-sf-lambda-0.1.1.zip"` | no |
+| lambda\_function\_zip\_base\_url | Base URL of zip file with lambda function code. Path part with version number (see `lambda_function_version` variable) will be added automatically) | `string` | `"https://github.com/lablabs/aws-sf-lambda/releases/download/"` | no |
+| lambda\_function\_zip\_filename | Filename of zip file with lambda function code. Version number (see `lambda_function_version` variable) and `.zip` extension will be added automatically. | `string` | `"aws-sf-lambda-"` | no |
 | load\_balancers | List of LBs added to the ASGs | `list(string)` | `[]` | no |
 | root\_ebs\_size | Size of the root EBS volume | `string` | `"20"` | no |
 | tag\_inventory\_name | Name of the Inventory tag which is used by the aws-sf lambda | `string` | `"Inventory"` | no |

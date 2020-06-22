@@ -1,15 +1,18 @@
 locals {
-  lambda_zip_file_path = abspath(var.lambda_function_zip_filename)
+  lambda_zip_filename  = "${var.lambda_function_zip_filename}${var.lambda_function_version}.zip"
+  lambda_zip_file_path = abspath(local.lambda_zip_filename)
+  lambda_url           = "${var.lambda_function_zip_base_url}${var.lambda_function_version}/${var.lambda_function_zip_filename}${var.lambda_function_version}.zip"
 }
 
 resource "null_resource" "lambda_code" {
   triggers = {
     url : var.lambda_function_zip_base_url
     filename : var.lambda_function_zip_filename
+    version : var.lambda_function_version
   }
 
   provisioner "local-exec" {
-    command = "curl -sSL -o ${var.lambda_function_zip_filename} ${var.lambda_function_zip_base_url}${var.lambda_function_zip_filename}"
+    command = "curl -sSL -o ${local.lambda_zip_filename} ${local.lambda_url}"
   }
 }
 

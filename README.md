@@ -1,5 +1,7 @@
 # aws-sf
 
+![Terraform validation](https://github.com/lablabs/terraform-aws-sf/workflows/Terraform%20validation/badge.svg?branch=master)
+
 ## Overview
 
 Creates ASGs with static IP and EBS volume for each launched EC2 instance.

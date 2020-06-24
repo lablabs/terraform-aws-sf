@@ -86,6 +86,7 @@ See [Basic example](examples/basic/README.md) for further information.
 | lambda\_function\_zip\_filename | Filename of zip file with lambda function code. Version number (see `lambda_function_version` variable) and `.zip` extension will be added automatically. | `string` | `"aws-sf-lambda-"` | no |
 | load\_balancers | List of LBs added to the ASGs | `list(string)` | `[]` | no |
 | root\_ebs\_size | Size of the root EBS volume | `string` | `"20"` | no |
+| sf\_init\_userdata\_version | The version of userdata init scripts | `string` | `"0.1.1"` | no |
 | tag\_inventory\_name | Name of the Inventory tag which is used by the aws-sf lambda | `string` | `"Inventory"` | no |
 | tag\_stack\_name | Name of the Stack tag which is used by the aws-sf lambda | `string` | `"Stack"` | no |
 | tags | Additional tags, e.g. `map('BusinessUnit','XYZ')` | `map(string)` | <pre>{<br>  "Terraform": true<br>}</pre> | no |

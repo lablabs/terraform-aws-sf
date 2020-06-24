@@ -80,6 +80,12 @@ variable "target_group_arns" {
   default     = []
 }
 
+variable "sf_init_userdata_version" {
+  description = "The version of userdata init scripts"
+  type        = string
+  default     = "0.1.1"
+}
+
 variable "before_sf_init_userdata" {
   description = "Additional commands to execute on machine before sf init was run"
   type        = string

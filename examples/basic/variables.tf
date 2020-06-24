@@ -3,16 +3,6 @@ variable "ssh_public_key" {
   description = "Public key for SSHing into instances"
 }
 
-variable "s3_bucket" {
-  type        = string
-  description = "The name of AWS S3 bucket where aws-sf-lambda is stored"
-}
-
-variable "s3_bucket_key" {
-  type        = string
-  description = "The key of aws-sf-lambda function used in S3 bucket"
-}
-
 variable "aws_region" {
   type        = string
   description = "AWS region where resources will be created"

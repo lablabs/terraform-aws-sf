@@ -19,8 +19,6 @@ Run `terraform destroy` when you don’t need these resources.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| s3\_bucket | The name of AWS S3 bucket where aws-sf-lambda is stored | `string` | n/a | yes |
-| s3\_bucket\_key | The key of aws-sf-lambda function used in S3 bucket | `string` | n/a | yes |
 | ssh\_public\_key | Public key for SSHing into instances | `string` | n/a | yes |
 | ami | Ubuntu Linux Bionic/Xenial AMI | `string` | `"ami-0b6d8a6db0c665fb7"` | no |
 | aws\_region | AWS region where resources will be created | `string` | `"eu-central-1"` | no |

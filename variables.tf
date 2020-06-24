@@ -149,12 +149,19 @@ variable "sg_ids" {
   type        = list(string)
 }
 
-variable "lambda_s3_bucket" {
-  description = "S3 bucket where the lambda function package is stored"
+variable "lambda_function_zip_base_url" {
   type        = string
+  description = "Base URL of zip file with lambda function code. Path part with version number (see `lambda_function_version` variable) will be added automatically)"
+  default     = "https://github.com/lablabs/aws-sf-lambda/releases/download/"
 }
 
-variable "lambda_s3_bucket_key" {
-  description = "S3 bucket key of the lambda function package"
+variable "lambda_function_zip_filename" {
   type        = string
+  description = "Filename of zip file with lambda function code. Version number (see `lambda_function_version` variable) and `.zip` extension will be added automatically."
+  default     = "aws-sf-lambda-"
+}
+
+variable "lambda_function_version" {
+  type        = string
+  description = "Version of lambda function. See https://github.com/lablabs/aws-sf-lambda/releases"
 }

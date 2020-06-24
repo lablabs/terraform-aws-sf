@@ -12,8 +12,8 @@ The static IPs and EBS volumes are managed by [aws-sf-lambda](#aws-sf-lambda) la
 
 This plugin requires Ubuntu AMI to be used, see [aws-sf-userdata](#aws-sf-userdata) related project for further reference.
 
-Every release of lambda function code should provide a zip file with a unique 
-url (a combination of `lambda_function_zip_base_url`, 
+Every release of lambda function code should provide a zip file with a unique
+url (a combination of `lambda_function_zip_base_url`,
 `lambda_function_zip_filename` and `lambda_function_version` input variables).
 In other case, `aws_lambda_function` resource may not be updated correctly.
 
@@ -30,8 +30,10 @@ URL: https://github.com/lablabs/aws-sf-lambda
 
 #### Path and filename
 
-Three variables are related to the lambda function zip file: `lambda_function_zip_base_url`, `lambda_function_zip_filename` and `lambda_function_version`. Terraform will combine these three into valid path
-and download zip file: 
+Three variables are related to the lambda function zip file:
+`lambda_function_zip_base_url`, `lambda_function_zip_filename` and
+`lambda_function_version`. Terraform will combine these three into valid path
+and download zip file:
 ```
 ${lambda_function_zip_base_url}${lambda_function_version}/${lambda_function_zip_filename}${lambda_function_version}.zip
 ```

@@ -51,6 +51,12 @@ URL: https://github.com/lablabs/aws-sf-userdata
 See [Basic example](examples/basic/README.md) for further information.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| terraform | >= 0.12, < 0.13 |
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |

@@ -20,7 +20,7 @@ Content-Disposition: attachment; filename="userdata.txt"
 #!/bin/bash
 ${before_sf_init_userdata}
 
-curl -s -L https://raw.githubusercontent.com/lablabs/aws-sf-userdata/master/init.sh | bash
+curl -s -L https://raw.githubusercontent.com/lablabs/aws-sf-userdata/${sf_init_userdata_version}/init.sh | bash -s ${sf_init_userdata_version}
 
 ${after_sf_init_userdata}
 --//

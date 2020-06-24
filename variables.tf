@@ -81,7 +81,7 @@ variable "target_group_arns" {
 }
 
 variable "sf_init_userdata_version" {
-  description = "The version fo userdata init scripts"
+  description = "The version of userdata init scripts"
   type        = string
   default     = "0.1.1"
 }

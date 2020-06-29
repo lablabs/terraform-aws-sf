@@ -23,9 +23,10 @@ resource "aws_launch_configuration" "default" {
 data "template_file" "user_data" {
   template = file("${path.module}/templates/user-data.yml.tpl")
   vars = {
-    sf_init_userdata_version = var.sf_init_userdata_version
-    before_sf_init_userdata  = var.before_sf_init_userdata
-    after_sf_init_userdata   = var.after_sf_init_userdata
+    sf_init_userdata_version       = var.sf_init_userdata_version
+    sf_init_curl_additional_params = var.sf_init_curl_additional_params
+    before_sf_init_userdata        = var.before_sf_init_userdata
+    after_sf_init_userdata         = var.after_sf_init_userdata
   }
 }
 

@@ -80,10 +80,17 @@ variable "target_group_arns" {
   default     = []
 }
 
+
+variable "sf_init_curl_additional_params" {
+  description = "Additional curl parameters for getting init.sh script"
+  type        = string
+  default     = "--connect-timeout 10 --max-time 20 --retry 5 --retry-delay 5 --retry-max-time 300"
+}
+
 variable "sf_init_userdata_version" {
   description = "The version of userdata init scripts"
   type        = string
-  default     = "0.1.1"
+  default     = "0.1.2"
 }
 
 variable "before_sf_init_userdata" {

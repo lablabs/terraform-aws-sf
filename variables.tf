@@ -90,7 +90,7 @@ variable "sf_init_curl_additional_params" {
 variable "sf_init_userdata_version" {
   description = "The version of userdata init scripts"
   type        = string
-  default     = "0.1.2"
+  default     = "0.2.0"
 }
 
 variable "before_sf_init_userdata" {

@@ -87,7 +87,7 @@ See [Basic example](examples/basic/README.md) for further information.
 | load\_balancers | List of LBs added to the ASGs | `list(string)` | `[]` | no |
 | root\_ebs\_size | Size of the root EBS volume | `string` | `"20"` | no |
 | sf\_init\_curl\_additional\_params | Additional curl parameters for getting init.sh script | `string` | `"--connect-timeout 10 --max-time 20 --retry 5 --retry-delay 5 --retry-max-time 300"` | no |
-| sf\_init\_userdata\_version | The version of userdata init scripts | `string` | `"0.1.2"` | no |
+| sf\_init\_userdata\_version | The version of userdata init scripts | `string` | `"0.2.0"` | no |
 | tag\_inventory\_name | Name of the Inventory tag which is used by the aws-sf lambda | `string` | `"Inventory"` | no |
 | tag\_stack\_name | Name of the Stack tag which is used by the aws-sf lambda | `string` | `"Stack"` | no |
 | tags | Additional tags, e.g. `map('BusinessUnit','XYZ')` | `map(string)` | <pre>{<br>  "Terraform": true<br>}</pre> | no |

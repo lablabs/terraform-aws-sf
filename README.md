@@ -55,14 +55,16 @@ See [Basic example](examples/basic/README.md) for further information.
 
 | Name | Version |
 |------|---------|
-| terraform | >= 0.12, < 0.13 |
+| terraform | >= 0.12.26, < 0.14.0 |
+| aws | >= 2.0, < 4.0 |
+| local | ~> 1.2 |
+| null | ~> 2.0 |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | ami | ID of AMI used to launch instances | `string` | n/a | yes |
-| aws\_region | AWS region | `string` | n/a | yes |
 | aws\_zones | Name of the AZs | `list(string)` | n/a | yes |
 | iam\_instance\_profile\_id | IAM instance profile ID associated with the EC2 instances | `string` | n/a | yes |
 | key\_pair\_id | SSH key pair ID | `string` | n/a | yes |
@@ -72,7 +74,6 @@ See [Basic example](examples/basic/README.md) for further information.
 | sg\_ids | ID of security groups that are assigned to the instances | `list(string)` | n/a | yes |
 | stack\_name | Name of the stack that is supposed to be managed by the module | `string` | n/a | yes |
 | subnets | ID of subnets where the module should launch EC2 instances | `map(string)` | n/a | yes |
-| vpc\_id | ID of the VPC | `string` | n/a | yes |
 | after\_sf\_init\_userdata | Additional commands to execute on machine after sf init was run | `string` | `""` | no |
 | before\_sf\_init\_userdata | Additional commands to execute on machine before sf init was run | `string` | `""` | no |
 | ebs\_delete\_on\_termination | Delete EBS volume on termination | `string` | `"true"` | no |

@@ -105,7 +105,6 @@ resource "aws_main_route_table_association" "this" {
 
 module "sf" {
   source                  = "../.."
-  aws_region              = var.aws_region
   ami                     = var.ami
   aws_zones               = var.aws_zones
   iam_instance_profile_id = aws_iam_instance_profile.kafka.id
@@ -115,7 +114,6 @@ module "sf" {
   sg_ids                  = [aws_security_group.kafka.id]
   stack_name              = var.name
   subnets                 = { for s in aws_subnet.kafka : s.availability_zone => s.id }
-  vpc_id                  = aws_vpc.kafka.id
   instance_type           = var.instance_type
   lambda_function_version = "0.1.1"
 }

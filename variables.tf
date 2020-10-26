@@ -137,16 +137,6 @@ variable "key_pair_id" {
   type        = string
 }
 
-variable "vpc_id" {
-  description = "ID of the VPC"
-  type        = string
-}
-
-variable "aws_region" {
-  description = "AWS region"
-  type        = string
-}
-
 variable "iam_instance_profile_id" {
   description = "IAM instance profile ID associated with the EC2 instances"
   type        = string

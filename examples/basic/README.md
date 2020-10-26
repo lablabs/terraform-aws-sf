@@ -17,7 +17,12 @@ Run `terraform destroy` when you don’t need these resources.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| terraform | >= 0.12.26, < 0.14.0 |
+| aws | >= 2.0, < 4.0 |
+| local | ~> 1.2 |
+| null | ~> 2.0 |
 
 ## Inputs
 

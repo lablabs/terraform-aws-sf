@@ -1,3 +1,6 @@
+# DEPRECATED
+This project is no longer supported, for similar cases please consider using [aws-asg-lambda](https://github.com/lablabs/terraform-aws-asg-lambda) instead.
+
 # aws-sf
 
 ![Terraform validation](https://github.com/lablabs/terraform-aws-sf/workflows/Terraform%20validation/badge.svg?branch=master)
